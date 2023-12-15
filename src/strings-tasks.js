@@ -155,8 +155,16 @@ function repeatString(str, times) {
  *   removeFirstOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeFirstOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeFirstOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeFirstOccurrences(str, value) {
+  const i = str.indexOf(value);
+  if (i === -1) {
+    return str;
+  }
+  let firstElem = '';
+  let secondElem = '';
+  firstElem = str.slice(0, i);
+  secondElem = str.slice(i + value.length);
+  return firstElem + secondElem;
 }
 
 /**
@@ -171,8 +179,16 @@ function removeFirstOccurrences(/* str, value */) {
  *   removeLastOccurrences('I like legends', 'end') => 'I like legs'.
  *   removeLastOccurrences('ABABAB', 'BA') => 'ABAB'.
  */
-function removeLastOccurrences(/* str, value */) {
-  throw new Error('Not implemented');
+function removeLastOccurrences(str, value) {
+  const i = str.lastIndexOf(value);
+  if (i === -1) {
+    return str;
+  }
+  let firstElem = '';
+  let secondElem = '';
+  firstElem = str.slice(0, i);
+  secondElem = str.slice(i + value.length);
+  return firstElem + secondElem;
 }
 
 /**
@@ -187,8 +203,15 @@ function removeLastOccurrences(/* str, value */) {
  *   sumOfCodes('') => 0
  *   sumOfCodes() => 0
  */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
+function sumOfCodes(str) {
+  let sumCharCode = 0;
+  if (!str) {
+    return 0;
+  }
+  for (let i = 0; i < str.length; i += 1) {
+    sumCharCode += str.charCodeAt(i);
+  }
+  return sumCharCode;
 }
 
 /**
@@ -202,8 +225,11 @@ function sumOfCodes(/* str */) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  if (str.startsWith(substr)) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -217,8 +243,11 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  if (str.endsWith(substr)) {
+    return true;
+  }
+  return false;
 }
 
 /**
