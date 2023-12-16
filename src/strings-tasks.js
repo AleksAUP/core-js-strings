@@ -387,8 +387,15 @@ function isPalindrome(str) {
  *   findLongestWord('A long and winding road') => 'winding'
  *   findLongestWord('No words here') => 'words'
  */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
+function findLongestWord(sentence) {
+  const wordArr = sentence.split(' ');
+  let longestWord = wordArr[0];
+  for (let i = 0; i < wordArr.length - 1; i += 1) {
+    if (wordArr[i] > wordArr[i + 1]) {
+      longestWord = wordArr[i];
+    }
+  }
+  return longestWord;
 }
 
 /**
@@ -401,8 +408,16 @@ function findLongestWord(/* sentence */) {
  *   reverseWords('Hello World') => 'olleH dlroW'
  *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
  */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
+function reverseWords(str) {
+  const wordArr = str.split(' ');
+  let reversedWord = '';
+  for (let i = 0; i < wordArr.length; i += 1) {
+    reversedWord += wordArr[i].split('').reverse().join('');
+    if (i !== wordArr.length - 1) {
+      reversedWord += ' ';
+    }
+  }
+  return reversedWord;
 }
 
 /**
@@ -416,8 +431,17 @@ function reverseWords(/* str */) {
  *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
  *   invertCase('12345') => '12345'
  */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
+function invertCase(str) {
+  const arrWords = str.split('');
+  let finalStr = '';
+  for (let i = 0; i < arrWords.length; i += 1) {
+    if (arrWords[i] === arrWords[i].toLowerCase()) {
+      finalStr += arrWords[i].toUpperCase();
+    } else {
+      finalStr += arrWords[i].toLowerCase();
+    }
+  }
+  return finalStr;
 }
 
 /**
@@ -433,8 +457,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -447,8 +471,11 @@ function getStringFromTemplate(/* firstName, lastName */) {
  *   extractNameFromTemplate('Hello, John Doe!') => 'John Doe'
  *   extractNameFromTemplate('Hello, Chuck Norris!') => 'Chuck Norris'
  */
-function extractNameFromTemplate(/* value */) {
-  throw new Error('Not implemented');
+function extractNameFromTemplate(value) {
+  const arrNames = value.split(' ');
+  const firstName = arrNames[1];
+  const lastName = arrNames[2].replace('!', '');
+  return `${firstName} ${lastName}`;
 }
 
 /**
@@ -462,10 +489,16 @@ function extractNameFromTemplate(/* value */) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  const arrStrng = str.split('');
+  let finishString = '';
+  for (let i = 0; i < arrStrng.length; i += 1) {
+    if (arrStrng[i] !== '<' && arrStrng[i] !== '>') {
+      finishString += arrStrng[i];
+    }
+  }
+  return finishString;
 }
-
 /**
  * Extracts e-mails from single string with e-mails list delimited by semicolons
  *
@@ -481,8 +514,8 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';').join(',').split(',');
 }
 
 /**
@@ -501,8 +534,10 @@ function extractEmails(/* str */) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-function encodeToRot13(/* str */) {
-  throw new Error('Not implemented');
+function encodeToRot13(str) {
+  const a = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  const b = 'nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM';
+  return str.replace(/[a-z]/gi, (c) => b[a.indexOf(c)]);
 }
 
 /**
@@ -529,8 +564,68 @@ function encodeToRot13(/* str */) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(/* value */) {
-  throw new Error('Not implemented');
+function getCardId(value) {
+  const strArr = [
+    'A♣',
+    '2♣',
+    '3♣',
+    '4♣',
+    '5♣',
+    '6♣',
+    '7♣',
+    '8♣',
+    '9♣',
+    '10♣',
+    'J♣',
+    'Q♣',
+    'K♣',
+    'A♦',
+    '2♦',
+    '3♦',
+    '4♦',
+    '5♦',
+    '6♦',
+    '7♦',
+    '8♦',
+    '9♦',
+    '10♦',
+    'J♦',
+    'Q♦',
+    'K♦',
+    'A♥',
+    '2♥',
+    '3♥',
+    '4♥',
+    '5♥',
+    '6♥',
+    '7♥',
+    '8♥',
+    '9♥',
+    '10♥',
+    'J♥',
+    'Q♥',
+    'K♥',
+    'A♠',
+    '2♠',
+    '3♠',
+    '4♠',
+    '5♠',
+    '6♠',
+    '7♠',
+    '8♠',
+    '9♠',
+    '10♠',
+    'J♠',
+    'Q♠',
+    'K♠',
+  ];
+  let id = null;
+  for (let i = 0; i < strArr.length; i += 1) {
+    if (strArr[i] === value) {
+      id = i;
+    }
+  }
+  return id;
 }
 
 module.exports = {
